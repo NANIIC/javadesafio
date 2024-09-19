@@ -24,13 +24,43 @@ public class desafio {
                 3 - Depositar
                 9 - Salir
                 """;
-        //Habilitamos entrada de teclado   INT por que es numero
-        Scanner teclado = new Scanner (System.int);
+        //Habilitamos entrada de teclado
+        Scanner teclado = new Scanner (System.in);
+        // != usamos eso para que rompa la repeticion
         while (opcion !=9){
             System.out.println(menu);
             //asignar a la opcionn de lo que va a ser recibido por teclado
             opcion = teclado.nextInt();
-            
+
+            switch (opcion){
+                case 1:
+                    System.out.println("El saldo actualizado es: $" + saldo);
+                    break; //rompemos para que no quede en ciclo infinito mostrando esta opc
+                case 2:
+                    System.out.println("Cuál es el valor que desea retirar?");
+                    double valorARetirar = teclado.nextDouble();
+                    if (valorARetirar > saldo){
+                        System.out.println("Saldo insuficiente");
+                    } else{
+                        saldo = saldo - valorARetirar;
+                        System.out.println("El saldo actualizado es: $" + saldo);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Cuál es el valor que desea depositar?");
+                    double valorADepositar = teclado.nextDouble();
+                    saldo += valorADepositar;
+                    System.out.println("El saldo actualizado es: $" + saldo);
+                    break;
+                case 9:
+                    System.out.println("Saliendo del programa, gracias por utilizar nuestro servicio");
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+
+            }
+
+
         }
     }
 
